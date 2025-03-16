@@ -23,6 +23,8 @@ Le bloc visé correspond au bloc sous forme cassable.
 
 **Suppression de blocs cassables**
 
+Formes :
+
 - `no-block-breakable`
 
 Régénère le bloc à son état initial avant la suppression.
