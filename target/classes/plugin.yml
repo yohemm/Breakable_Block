@@ -4,7 +4,7 @@ author: Your Name
 main: fr.yohem.MyPlugin
 commands:
     block-breakable:
-      usage: "/block-breakable timeInMinToRegen idRecomp:data min-maxQuantity idBlockAfterBreak:data"
+      usage: "/block-breakable timeInSecToRegen idRecomp:data min-maxQuantity idBlockAfterBreak:data"
       description: set block breakable 
       permission: breakable-bloc.set
     no-block-breakable:

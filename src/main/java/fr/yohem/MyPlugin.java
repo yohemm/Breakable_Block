@@ -1,5 +1,6 @@
 package fr.yohem;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.HashMap;
@@ -22,7 +23,8 @@ import org.bukkit.util.BlockIterator;
 
 public class MyPlugin extends JavaPlugin {
 
-    HashMap<BlockBreakable, Long> coulDowns = new HashMap<BlockBreakable,Long>();
+    HashMap<BlockBreakable, Long> coulDowns = new HashMap<BlockBreakable, Long>();
+
     // This code is called after the server starts and after the /reload command
     @Override
     public void onEnable() {
@@ -30,29 +32,20 @@ public class MyPlugin extends JavaPlugin {
         getCommand("block-breakable").setExecutor(new BreakableCommands());
         getCommand("no-block-breakable").setExecutor(new BreakableCommands());
         getServer().getPluginManager().registerEvents(new BlockBreakableListener(this), this);
+        BlockBreakable.importsBlockBreakables(this);
+        BlockBreakable.regeneAllBlocks();
 
         new BukkitRunnable() {
 
-			@Override
-			public void run() {
-                Iterator<Entry<BlockBreakable, Long>> iterator = coulDowns.entrySet().iterator(); 
+            @Override
+            public void run() {
+                for (BlockBreakable blockBreakable : BlockBreakable.blocks) {
+                    if (blockBreakable != null && blockBreakable.isBreaked()) {
+                        blockBreakable.verifyCouldDown();
+                    }
+                }
+            }
 
-                // Iterate over the HashMap 
-                while (iterator.hasNext()) { 
-
-                    // Get the entry at this iteration 
-                    Entry<BlockBreakable, Long> entry = iterator.next(); 
-
-                    // Check if this key is the required key 
-                    if (!entry.getKey().verifyCouldDown(entry.getValue())) { 
-                        entry.getKey().regeneBlock();
-
-                        // Remove this entry from HashMap 
-                        iterator.remove(); 
-                    } 
-                } 
-			}
-            
         }.runTaskTimer(this, 0, 40L);
     }
 
@@ -60,5 +53,8 @@ public class MyPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().log(Level.INFO, "{0}.onDisable()", this.getClass().getName());
+        BlockBreakable.export(this);
+        BlockBreakable.regeneAllBlocks();
     }
+
 }

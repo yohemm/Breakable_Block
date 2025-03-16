@@ -45,17 +45,19 @@
             </plugin>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
-                <configuration>
-                    <tasks>
-                        <copy file="target/breakable-block-1.0-SNAPSHOT.jar" todir="/Users/Aditya/Desktop/spigot/plugins"/>
-                    </tasks>
-                </configuration>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <phase>install</phase>
+                        <id>compile</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
+                        <configuration>
+                            <target>
+                                <copy file="target/breakable-block-1.0-SNAPSHOT.jar" todir="D:\_Dev\LocalServ\plugins"/>
+                            </target>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
