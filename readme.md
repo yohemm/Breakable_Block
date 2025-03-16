@@ -2,7 +2,7 @@
 
 ## block-breakable
 
-    creation de block cassable
+**Création de blocs cassables**
 
 Formes :
 
@@ -11,28 +11,18 @@ Formes :
 - `/block-breakable timeInSecToRegen idRecomp min-maxQuantity`
 - `/block-breakable timeInSecToRegen idRecomp quantity`
 
-Le block visé correspond au block sous forme cassable
+Le bloc visé correspond au bloc sous forme cassable.
 
-idBlockAfterBreak : correspond au block une fois cassé (ex: `0` pour le vide ).
-
-timeInSecToRegen : temps en secondes avant regeneration de block sous forme cassable.
-
-idRecomp : item qui seras drop au sol lors du cassage de block.
-
-min-maxQuantity / quantity : nombre de recompenses qui seront drop, le nombre est generer aléatoirement entre 2 nombres à chaque cassage du block .`64` est exactement comme `64-64` est permet de d'avoir un nombre fix de recompense.
-
-idBlockAfterBreak : Permet de précisser le block de remplacement lors de l'état cassé/en cours de regenration, si il n'est pas précissé, la bedrock seras utilisé par défaults.
+- **idBlockAfterBreak** : Correspond au bloc une fois cassé (ex : `0` pour le vide).
+- **timeInSecToRegen** : Temps en secondes avant régénération du bloc sous forme cassable.
+- **idRecomp** : Item qui sera déposé au sol lors du cassage du bloc.
+- **min-maxQuantity / quantity** : Nombre de récompenses qui seront déposées. Le nombre est généré aléatoirement entre 2 valeurs à chaque cassage du bloc. `64` est équivalent à `64-64` et permet d'avoir un nombre fixe de récompenses.
+- **idBlockAfterBreak** : Permet de préciser le bloc de remplacement lors de l'état cassé/en cours de régénération. Si ce paramètre n'est pas précisé, la bedrock sera utilisée par défaut.
 
 ## no-block-breakable
 
-    Suppression de block cassable
+**Suppression de blocs cassables**
 
 - `no-block-breakable`
 
-regenere le block à son état initial avant la suppression
-
-# A ajouté
-
-Systeme de d'outils nessécaire pour casser un block
-
-Avoir plusieur trésor possible
+Régénère le bloc à son état initial avant la suppression.
